@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="http://localhost:4200">Super Library</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="http://localhost:4200">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:4200">Textbooks</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:4200">Comics</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+    <h2>All Books</h2>
+    </div>
+    <div class="container">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+
+        
+          <div class='card-body'>
+            <div id="filtercontainer">
+            <div class='row'>
+              <div class='col-md-3'>Filter By Name</div>
+              <div class='col-md-3'></div>
+                <input type='text'[(ngModel)]='listFilter'>
+              </div>
+            </div>
+          </div>
+
+        <tbody>
+          <tr class="clickable" *ngFor = "let book of books" [routerLink] = "['/books/', book.id]">
+            <td><img src="{{book.image}}" alt="Book Image"></td>
+            <td>{{book.name}}</td>
+            <td>{{book.description}}</td>
+            <td>{{book.price | currency: 'USD'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
